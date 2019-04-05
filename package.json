@@ -1,0 +1,24 @@
+{
+  "name": "bpmnlint-plugin-spark",
+  "version": "1.0.0",
+  "description": "BPMNLint plugin for BPM Spark",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ProcessMaker/bpmnlint-plugin-spark.git"
+  },
+  "keywords": [
+    "bpmnlint",
+    "plugin"
+  ],
+  "bugs": {
+    "url": "https://github.com/ProcessMaker/bpmnlint-plugin-spark/issues"
+  },
+  "homepage": "https://github.com/ProcessMaker/bpmnlint-plugin-spark#readme",
+  "dependencies": {
+    "bpmnlint-utils": "^1.0.1"
+  }
+}
