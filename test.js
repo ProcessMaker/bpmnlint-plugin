@@ -3,6 +3,7 @@ const RuleTester = require('bpmnlint/lib/testers/rule-tester');
 
 const gatewayDirectionRule = require('./rules/gateway-direction');
 const callActivityChildProcessRule = require('./rules/call-activity-child-process');
+const callActivitySequenceFlowRules = require('./rules/call-activity-sequence-flow');
 
 RuleTester.verify('gateway-direction', gatewayDirectionRule, {
   valid: [
@@ -57,6 +58,23 @@ RuleTester.verify('call-activity-child-process', callActivityChildProcessRule, {
       report: {
         id: 'node_2',
         message: 'Call Activity must have child process selected'
+      }
+    }
+  ]
+});
+
+RuleTester.verify('call-activity-sequence-flow', callActivitySequenceFlowRules, {
+  valid: [
+    {
+      moddleElement: readModdle('./test-diagrams/call-activity-sequence-flow.valid.bpmn')
+    }
+  ],
+  invalid: [
+    {
+      moddleElement: readModdle('./test-diagrams/call-activity-sequence-flow.invalid.bpmn'),
+      report: {
+        id: 'node_3',
+        message: 'Sequence flow must specify an EMPTY start event to utilize'
       }
     }
   ]
