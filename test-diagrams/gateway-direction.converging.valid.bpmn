@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" id="Definitions_03dabax" targetNamespace="http://bpmn.io/schema/bpmn" exporter="ProcessMaker Modeler" exporterVersion="1.0">
+  <bpmn:process id="Process_1" isExecutable="true">
+    <bpmn:parallelGateway id="node_2" name="New Parallel Gateway" gatewayDirection="Converging">
+      <bpmn:incoming>node_5</bpmn:incoming>
+      <bpmn:incoming>node_6</bpmn:incoming>
+    </bpmn:parallelGateway>
+    <bpmn:task id="node_3" name="Task">
+      <bpmn:outgoing>node_5</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="node_4" name="Task">
+      <bpmn:outgoing>node_6</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="node_5" sourceRef="node_3" targetRef="node_2" />
+    <bpmn:sequenceFlow id="node_6" sourceRef="node_4" targetRef="node_2" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">
+      <bpmndi:BPMNShape id="node_2_di" bpmnElement="node_2">
+        <dc:Bounds x="340" y="220" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="node_3_di" bpmnElement="node_3">
+        <dc:Bounds x="160" y="120" width="116" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="node_4_di" bpmnElement="node_4">
+        <dc:Bounds x="190" y="360" width="116" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="node_5_di" bpmnElement="node_5">
+        <di:waypoint x="218" y="120" />
+        <di:waypoint x="218" y="97" />
+        <di:waypoint x="358" y="97" />
+        <di:waypoint x="358" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="node_6_di" bpmnElement="node_6">
+        <di:waypoint x="306" y="398" />
+        <di:waypoint x="358" y="398" />
+        <di:waypoint x="358" y="256" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
