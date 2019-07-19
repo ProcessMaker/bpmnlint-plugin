@@ -1,6 +1,6 @@
 {
   "name": "bpmnlint-plugin-spark",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "BPMNLint plugin for BPM Spark",
   "main": "index.js",
   "scripts": {
