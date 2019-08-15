@@ -2,10 +2,10 @@ module.exports = {
   configs: {
     all: {
       rules: {
-        'spark/custom-validation': 'error',
-        'spark/gateway-direction': 'error',
-        'spark/call-activity-child-process': 'error',
-        'spark/call-activity-sequence-flow': 'error',
+        'processmaker/custom-validation': 'error',
+        'processmaker/gateway-direction': 'error',
+        'processmaker/call-activity-child-process': 'error',
+        'processmaker/call-activity-sequence-flow': 'error',
       },
     },
   },
