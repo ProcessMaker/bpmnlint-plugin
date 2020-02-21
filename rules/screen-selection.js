@@ -5,11 +5,12 @@ const { isAny } = require('bpmnlint-utils');
  */
 module.exports = function() {
     let selectedScreen = null;
-
+    let screenRef = null;
+    let allowInterstitial = null;
+    let interstitialScreenRef = null;
+    
     function hasSelectedScreen() {
-        screenRef = selectedScreen.get('screenRef');
-        
-        if (typeof screenRef === undefined || screenRef !== '') {
+        if (screenRef !== '') {
             return true;
         }
     
@@ -17,31 +18,29 @@ module.exports = function() {
     }
 
     function hasSelectedInterstitialScreen() {
-        screenRef = selectedScreen.get('interstitialScreenRef');
-        
-        if (screenRef !== undefined) {
+        if (interstitialScreenRef !== undefined) {
             return true;
         }
 
         return false;
     }
 
-    function checkAllowInterstitial() {
-        return selectedScreen.get('allowInterstitial');
-    }
-
     function check(node, reporter) {
+        
         if (!isAny(node, ['bpmn:Task', 'bpmn:ManualTask', 'bpmn:StartEvent'])) {
             return;
         }
 
         selectedScreen = node;
-
+        screenRef = selectedScreen.get('screenRef');
+        allowInterstitial = selectedScreen.get('allowInterstitial');
+        interstitialScreenRef = selectedScreen.get('interstitialScreenRef');
+        
         if (!hasSelectedScreen()) {
             reporter.report(node.id, 'A selected screen is required');
         }
 
-        if (checkAllowInterstitial() && !hasSelectedInterstitialScreen()) {
+        if (allowInterstitial && !hasSelectedInterstitialScreen()) {
             reporter.report(node.id, 'A interstitial screen is required');
         }
     }

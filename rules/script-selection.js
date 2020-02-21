@@ -5,11 +5,10 @@ const { is } = require('bpmnlint-utils');
  */
 module.exports = function() {
     let selectedScript = null;
+    let scriptRef = null;
 
     function hasSelectedScript() {
-        scriptRef = selectedScript.get('scriptRef');
-        
-        if (typeof scriptRef === undefined || scriptRef !== '') {
+        if (scriptRef !== '') {
             return true;
         }
 
@@ -21,6 +20,7 @@ module.exports = function() {
             return;
         }
         selectedScript = node;
+        scriptRef = selectedScript.get('scriptRef');
 
         if (!hasSelectedScript()) {
             reporter.report(node.id, 'A selected script is required');
