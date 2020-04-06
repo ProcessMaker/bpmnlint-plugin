@@ -3,7 +3,8 @@ const RuleTester = require('bpmnlint/lib/testers/rule-tester');
 
 const gatewayDirectionRule = require('./rules/gateway-direction');
 const callActivityChildProcessRule = require('./rules/call-activity-child-process');
-const callActivitySequenceFlowRules = require('./rules/call-activity-sequence-flow');
+const callActivitySequenceFlowRule = require('./rules/call-activity-sequence-flow');
+const idRequiredRule = require('./rules/id-required');
 
 RuleTester.verify('gateway-direction', gatewayDirectionRule, {
   valid: [
@@ -63,7 +64,7 @@ RuleTester.verify('call-activity-child-process', callActivityChildProcessRule, {
   ]
 });
 
-RuleTester.verify('call-activity-sequence-flow', callActivitySequenceFlowRules, {
+RuleTester.verify('call-activity-sequence-flow', callActivitySequenceFlowRule, {
   valid: [
     {
       moddleElement: readModdle('./test-diagrams/call-activity-sequence-flow.valid.bpmn')
@@ -75,6 +76,30 @@ RuleTester.verify('call-activity-sequence-flow', callActivitySequenceFlowRules, 
       report: {
         id: 'node_3',
         message: 'Sequence flow must specify an EMPTY start event to utilize'
+      }
+    }
+  ]
+});
+
+RuleTester.verify('id-required', idRequiredRule, {
+  valid: [
+    {
+      moddleElement: readModdle('./test-diagrams/id-required.valid.bpmn')
+    }
+  ],
+  invalid: [
+    {
+      moddleElement: readModdle('./test-diagrams/id-required.invalid.bpmn'),
+      report: {
+        id: null,
+        message: 'Element is missing ID'
+      }
+    },
+    {
+      moddleElement: readModdle('./test-diagrams/id-required.invalid2.bpmn'),
+      report: {
+        id: '1',
+        message: 'Element ID must be a valid QName'
       }
     }
   ]
