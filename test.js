@@ -86,6 +86,9 @@ RuleTester.verify('id-required', idRequiredRule, {
   valid: [
     {
       moddleElement: readModdle('./test-diagrams/id-required.valid.bpmn')
+    },
+    {
+      moddleElement: readModdle('./test-diagrams/event-definitions.valid.bpmn')
     }
   ],
   invalid: [

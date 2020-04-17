@@ -14,10 +14,14 @@ module.exports = function() {
       'bpmn:CompensateDefinition',
       'bpmn:ErrorEventDefinition',
       'bpmn:EscalationEventDefinition',
+      'bpmn:Expression',
       'bpmn:LinkEventDefinition',
       'bpmn:MessageEventDefinition',
       'bpmn:SignalEventDefinition',
       'bpmn:TerminateEventDefinition',
+      'bpmn:TimeCycle',
+      'bpmn:TimeDate',
+      'bpmn:TimeDuration',
       'bpmn:TimerEventDefinition',
     ]);
   }
