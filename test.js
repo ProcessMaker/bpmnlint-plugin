@@ -5,6 +5,7 @@ const gatewayDirectionRule = require('./rules/gateway-direction');
 const callActivityChildProcessRule = require('./rules/call-activity-child-process');
 const callActivitySequenceFlowRule = require('./rules/call-activity-sequence-flow');
 const idRequiredRule = require('./rules/id-required');
+const signalRefRequiredRule = require('./rules/signal-ref-required');
 
 RuleTester.verify('gateway-direction', gatewayDirectionRule, {
   valid: [
@@ -102,5 +103,62 @@ RuleTester.verify('id-required', idRequiredRule, {
         message: 'Element ID must be a valid QName'
       }
     }
+  ]
+});
+
+RuleTester.verify('signal-ref-required', signalRefRequiredRule, {
+  valid: [
+    {
+      moddleElement: readModdle('./test-diagrams/start-event-signal-ref.valid.bpmn')
+    },
+    {
+      moddleElement: readModdle('./test-diagrams/intermediate-catch-event-signal-ref.valid.bpmn')
+    },
+    {
+      moddleElement: readModdle('./test-diagrams/intermediate-throw-event-signal-ref.valid.bpmn')
+    },
+    {
+      moddleElement: readModdle('./test-diagrams/boundary-event-signal-ref.valid.bpmn')
+    },
+    {
+      moddleElement: readModdle('./test-diagrams/end-event-signal-ref.valid.bpmn')
+    }
+  ],
+  invalid: [
+    {
+      moddleElement: readModdle('./test-diagrams/start-event-signal-ref.invalid.bpmn'),
+      report: {
+        id: 'node_2',
+        message: 'Missing signal reference'
+      }
+    },
+    {
+      moddleElement: readModdle('./test-diagrams/intermediate-catch-event-signal-ref.invalid.bpmn'),
+      report: {
+        id: 'node_2',
+        message: 'Missing signal reference'
+      }
+    },
+    {
+      moddleElement: readModdle('./test-diagrams/intermediate-throw-event-signal-ref.invalid.bpmn'),
+      report: {
+        id: 'node_2',
+        message: 'Missing signal reference'
+      }
+    },
+    {
+      moddleElement: readModdle('./test-diagrams/boundary-event-signal-ref.invalid.bpmn'),
+      report: {
+        id: 'node_2',
+        message: 'Missing signal reference'
+      }
+    },
+    {
+      moddleElement: readModdle('./test-diagrams/end-event-signal-ref.invalid.bpmn'),
+      report: {
+        id: 'node_2',
+        message: 'Missing signal reference'
+      }
+    },
   ]
 });
