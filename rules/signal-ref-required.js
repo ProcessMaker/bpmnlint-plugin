@@ -1,12 +1,12 @@
 const { is, isAny } = require('bpmnlint-utils');
 
 /**
- * A rule that checks that call activities have a process selected
+ * A rule that checks that signal events have a signal ref
  */
 module.exports = function() {
 
   function hasEventDefinitions(node) {
-    return node.eventDefinitions instanceof Array
+    return Array.isArray(node.eventDefinitions)
       && node.eventDefinitions.length > 0;
   }
 
@@ -33,7 +33,7 @@ module.exports = function() {
     }
 
     const missing = filterEventDefinitionsWithoutSignalRef(node);
-  
+
     if (missing.length > 0) {
       reporter.report(node.id, 'Missing signal reference');
     }
