@@ -6,7 +6,7 @@ const { is, isAny } = require('bpmnlint-utils');
 module.exports = function() {
 
   function hasEventDefinitions(node) {
-    return node.eventDefinitions instanceof Array
+    return Array.isArray(node.eventDefinitions)
       && node.eventDefinitions.length > 0;
   }
 
