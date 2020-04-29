@@ -1,7 +1,7 @@
 const { is, isAny } = require('bpmnlint-utils');
 
 /**
- * A rule that checks that call activities have a process selected
+ * This rule verifies that the Signal Event Definitions have a reference to a signal
  */
 module.exports = function() {
 
