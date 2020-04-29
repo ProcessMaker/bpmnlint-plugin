@@ -1,6 +1,6 @@
 {
   "name": "bpmnlint-plugin-processmaker",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "BPMNLint plugin for BPM ProcessMaker",
   "main": "index.js",
   "scripts": {
