@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" id="Definitions_03dabax" targetNamespace="http://bpmn.io/schema/bpmn" exporter="ProcessMaker Modeler" exporterVersion="1.0">
+  <bpmn:process id="Process_1" isExecutable="true">
+    <bpmn:startEvent id="node_2" name="Signal Start Event">
+      <bpmn:signalEventDefinition />
+    </bpmn:startEvent>
+    <bpmn:startEvent id="node_4" name="Start Timer Event">
+      <bpmn:timerEventDefinition>
+        <bpmn:timeCycle>2020-04-17T20:19:00.000Z|R/2020-04-17T20:19:00.000Z/P1W</bpmn:timeCycle>
+      </bpmn:timerEventDefinition>
+    </bpmn:startEvent>
+    <bpmn:startEvent id="node_6" name="Message Start Event">
+      <bpmn:messageEventDefinition />
+    </bpmn:startEvent>
+    <bpmn:intermediateCatchEvent id="node_7" name="Intermediate Timer Event">
+      <bpmn:timerEventDefinition>
+        <bpmn:timeDate>2020-04-17T20:34:00.000Z</bpmn:timeDate>
+      </bpmn:timerEventDefinition>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:endEvent id="node_9" name="Error End Event">
+      <bpmn:errorEventDefinition errorRef="node_9_error" />
+    </bpmn:endEvent>
+    <bpmn:endEvent id="node_11" name="Terminate End Event">
+      <bpmn:terminateEventDefinition />
+    </bpmn:endEvent>
+    <bpmn:intermediateCatchEvent id="node_12" name="Intermediate Timer Event">
+      <bpmn:timerEventDefinition>
+        <bpmn:timeDuration>PT1H</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:intermediateCatchEvent>
+  </bpmn:process>
+  <bpmn:error id="node_9_error" name="node_9_error" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">
+      <bpmndi:BPMNShape id="node_2_di" bpmnElement="node_2">
+        <dc:Bounds x="210" y="90" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="node_4_di" bpmnElement="node_4">
+        <dc:Bounds x="210" y="190" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="node_6_di" bpmnElement="node_6">
+        <dc:Bounds x="360" y="90" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="node_7_di" bpmnElement="node_7">
+        <dc:Bounds x="360" y="190" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="node_9_di" bpmnElement="node_9">
+        <dc:Bounds x="510" y="90" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="node_11_di" bpmnElement="node_11">
+        <dc:Bounds x="510" y="190" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="node_12_di" bpmnElement="node_12">
+        <dc:Bounds x="360" y="310" width="36" height="36" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

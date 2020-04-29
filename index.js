@@ -7,6 +7,7 @@ module.exports = {
         'processmaker/call-activity-child-process': 'error',
         'processmaker/call-activity-sequence-flow': 'error',
         'processmaker/id-required': 'error',
+        'processmaker/signal-ref-required': 'error',
       },
     },
   },
