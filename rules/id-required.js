@@ -26,8 +26,15 @@ module.exports = function() {
     ]);
   }
 
+  function isLoopCharacteristic(node) {
+    return isAny(node, [
+        'bpmn:MultiInstanceLoopCharacteristics',
+        'bpmn:StandardLoopCharacteristics',
+    ]);
+  }
+
   function check(node, reporter) {
-    if (is(node, 'bpmn:Definitions') || isNonBpmnType(node) || isEventDefinition(node)) {
+    if (is(node, 'bpmn:Definitions') || isNonBpmnType(node) || isEventDefinition(node) || isLoopCharacteristic(node)) {
       return;
     }
 
