@@ -33,8 +33,18 @@ module.exports = function() {
     ]);
   }
 
+  function isDocumentation(node) {
+    return isAny(node, [
+      'bpmn:Documentation',
+    ]);
+  }
+
   function check(node, reporter) {
-    if (is(node, 'bpmn:Definitions') || isNonBpmnType(node) || isEventDefinition(node) || isLoopCharacteristic(node)) {
+    if (is(node, 'bpmn:Definitions')
+        || isDocumentation(node)
+        || isEventDefinition(node)
+        || isLoopCharacteristic(node)
+        || isNonBpmnType(node)) {
       return;
     }
 
