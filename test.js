@@ -1,11 +1,12 @@
 const readModdle = require('bpmnlint/lib/testers/helper').readModdle;
-const RuleTester = require('bpmnlint/lib/testers/rule-tester');
+const RuleTester = require('./rule-tester');
 
 const gatewayDirectionRule = require('./rules/gateway-direction');
 const callActivityChildProcessRule = require('./rules/call-activity-child-process');
 const callActivitySequenceFlowRule = require('./rules/call-activity-sequence-flow');
 const idRequiredRule = require('./rules/id-required');
 const signalRefRequiredRule = require('./rules/signal-ref-required');
+const eventBasedGatewayRule = require('./rules/event-based-gateway');
 
 RuleTester.verify('gateway-direction', gatewayDirectionRule, {
   valid: [
@@ -162,6 +163,41 @@ RuleTester.verify('signal-ref-required', signalRefRequiredRule, {
         id: 'node_2',
         message: 'Missing signal reference'
       }
+    },
+  ]
+});
+
+RuleTester.verify('event-based-gateway', eventBasedGatewayRule, {
+  valid: [
+    {
+      moddleElement: readModdle('./test-diagrams/event-based-gateway.valid.bpmn')
+    },
+  ],
+  invalid: [
+    {
+      moddleElement: readModdle('./test-diagrams/event-based-gateway.invalid.bpmn'),
+      report: [
+        {
+          "category": "error",
+          "id": "node_6",
+          "message": "Event Gateway target elements must not have additional incoming Sequence Flows"
+        },
+        {
+          "category": "error",
+          "id": "node_2",
+          "message": "Event Gateways target elements must be Catch Events"
+        },
+        {
+          "category": "error",
+          "id": "node_4",
+          "message": "Event Gateways target elements must be Catch Events"
+        },
+        {
+          "category": "error",
+          "id": "node_3",
+          "message": "Event Gateways target elements must be valid Catch Events"
+        }
+      ]
     },
   ]
 });
