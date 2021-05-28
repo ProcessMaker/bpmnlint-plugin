@@ -4,6 +4,7 @@ module.exports = {
       rules: {
         'processmaker/custom-validation': 'error',
         'processmaker/gateway-direction': 'error',
+        'processmaker/event-based-gateway': 'error',
         'processmaker/call-activity-child-process': 'error',
         'processmaker/call-activity-sequence-flow': 'error',
         'processmaker/id-required': 'error',
