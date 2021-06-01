@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:pm="http://processmaker.com/BPMN/2.0/Schema.xsd" xmlns:tns="http://sourceforge.net/bpmn/definitions/_1530553328908" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://bpmn.io/schema/bpmn" exporter="ProcessMaker Modeler" exporterVersion="1.0" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL http://bpmn.sourceforge.net/schemas/BPMN20.xsd">
+  <bpmn:process id="ProcessId" name="ProcessName" isExecutable="true">
+    <bpmn:startEvent id="node_1" name="Start Event" pm:allowInterstitial="false" pm:config="{&#34;web_entry&#34;:null}">
+      <bpmn:outgoing>node_5</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:eventBasedGateway id="node_3" name="Event Based Gateway">
+      <bpmn:incoming>node_5</bpmn:incoming>
+      <bpmn:outgoing>node_9</bpmn:outgoing>
+      <bpmn:outgoing>node_11</bpmn:outgoing>
+      <bpmn:outgoing>node_26</bpmn:outgoing>
+    </bpmn:eventBasedGateway>
+    <bpmn:sequenceFlow id="node_5" name="" sourceRef="node_1" targetRef="node_3" />
+    <bpmn:intermediateCatchEvent id="node_6" name="Intermediate Timer Event">
+      <bpmn:incoming>node_9</bpmn:incoming>
+      <bpmn:outgoing>node_18</bpmn:outgoing>
+      <bpmn:timerEventDefinition>
+        <bpmn:timeDuration>PT1H</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:sequenceFlow id="node_9" name="" sourceRef="node_3" targetRef="node_6" />
+    <bpmn:intermediateCatchEvent id="node_15" name="Intermediate Message Catch Event">
+      <bpmn:incoming>node_11</bpmn:incoming>
+      <bpmn:outgoing>node_23</bpmn:outgoing>
+      <bpmn:messageEventDefinition messageRef="node_19_message" />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:sequenceFlow id="node_11" name="" sourceRef="node_3" targetRef="node_15" />
+    <bpmn:endEvent id="node_19" name="Message End Event">
+      <bpmn:incoming>node_18</bpmn:incoming>
+      <bpmn:messageEventDefinition messageRef="node_19_message" />
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="node_18" name="" sourceRef="node_6" targetRef="node_19" />
+    <bpmn:endEvent id="node_24" name="Signal End Event">
+      <bpmn:incoming>node_23</bpmn:incoming>
+      <bpmn:signalEventDefinition signalRef="sync_assignment" />
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="node_23" name="" sourceRef="node_15" targetRef="node_24" />
+    <bpmn:intermediateCatchEvent id="node_27" name="Intermediate Signal Catch Event">
+      <bpmn:incoming>node_26</bpmn:incoming>
+      <bpmn:outgoing>node_30</bpmn:outgoing>
+      <bpmn:signalEventDefinition signalRef="sync_assignment" />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:sequenceFlow id="node_26" name="" sourceRef="node_3" targetRef="node_27" />
+    <bpmn:endEvent id="node_28" name="End Event" pm:screenRef="">
+      <bpmn:incoming>node_30</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="node_30" name="" sourceRef="node_27" targetRef="node_28" />
+  </bpmn:process>
+  <bpmn:message id="node_19_message" name="node_19_message" />
+  <bpmn:signal id="sync_assignment" name="sync_assignment" />
+  <bpmndi:BPMNDiagram id="BPMNDiagramId">
+    <bpmndi:BPMNPlane id="BPMNPlaneId" bpmnElement="ProcessId">
+      <bpmndi:BPMNShape id="node_1_di" bpmnElement="node_1">
+        <dc:Bounds x="270" y="280" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="node_3_di" bpmnElement="node_3">
+        <dc:Bounds x="400" y="280" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="node_5_di" bpmnElement="node_5">
+        <di:waypoint x="288" y="298" />
+        <di:waypoint x="418" y="298" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="node_6_di" bpmnElement="node_6">
+        <dc:Bounds x="590" y="280" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="node_9_di" bpmnElement="node_9">
+        <di:waypoint x="418" y="298" />
+        <di:waypoint x="608" y="298" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="node_15_di" bpmnElement="node_15">
+        <dc:Bounds x="400" y="440" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="node_11_di" bpmnElement="node_11">
+        <di:waypoint x="418" y="298" />
+        <di:waypoint x="418" y="458" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="node_19_di" bpmnElement="node_19">
+        <dc:Bounds x="840" y="280" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="node_18_di" bpmnElement="node_18">
+        <di:waypoint x="608" y="298" />
+        <di:waypoint x="858" y="298" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="node_24_di" bpmnElement="node_24">
+        <dc:Bounds x="400" y="560" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="node_23_di" bpmnElement="node_23">
+        <di:waypoint x="418" y="458" />
+        <di:waypoint x="418" y="578" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="node_27_di" bpmnElement="node_27">
+        <dc:Bounds x="400" y="140" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="node_26_di" bpmnElement="node_26">
+        <di:waypoint x="418" y="298" />
+        <di:waypoint x="418" y="158" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="node_28_di" bpmnElement="node_28">
+        <dc:Bounds x="610" y="140" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="node_30_di" bpmnElement="node_30">
+        <di:waypoint x="418" y="158" />
+        <di:waypoint x="628" y="158" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
