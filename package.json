@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/ProcessMaker/bpmnlint-plugin#readme",
   "dependencies": {
-    "bpmnlint": "^5.0.0",
+    "bpmnlint": "^7.2.1",
     "bpmnlint-utils": "^1.0.1",
     "mocha": "^6.1.2"
   }
