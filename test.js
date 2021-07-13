@@ -99,13 +99,6 @@ RuleTester.verify('id-required', idRequiredRule, {
         id: null,
         message: 'Element is missing ID'
       }
-    },
-    {
-      moddleElement: readModdle('./test-diagrams/id-required.invalid2.bpmn'),
-      report: {
-        id: '1',
-        message: 'Element ID must be a valid QName'
-      }
     }
   ]
 });
