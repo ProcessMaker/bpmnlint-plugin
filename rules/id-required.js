@@ -37,10 +37,6 @@ module.exports = function() {
       reporter.report(null, 'Element is missing ID');
       return;
     }
-
-    if (!nodeId.match(/^[a-zA-Z][^\s][a-zA-Z0-9_-]+$/)) {
-      reporter.report(node.id, 'Element ID must be a valid QName')
-    }
   }
 
   return { check };
