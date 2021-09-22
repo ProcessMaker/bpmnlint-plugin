@@ -19,6 +19,7 @@ module.exports = function() {
 
     if (!hasChildProcess()) {
       reporter.report(callActivity.id, 'Call Activity must have child process selected');
+      return;
     }
 
     if (typeof window !== 'undefined' && window.ProcessMaker.globalProcesses) {
