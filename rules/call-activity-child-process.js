@@ -43,7 +43,13 @@ module.exports = function() {
 function checkValidProcesses(processes, calledElement, startEvent) {
   const [bpmnId, processId] = calledElement.split('-');
   return processes.find(process => {
-    if (process.id == processId) {
+    if (process.id == processId || process.package_key == processId) {
+      // System processes don't have a start event configured in the callActivity
+      // so we won't verify it
+      if(process.category && process.category.is_system) {
+        return true;
+      }
+
       return filterValidStartEvents(process.events).find(event => event.id == startEvent) != undefined;
     }
     return false;
