@@ -23,6 +23,7 @@ module.exports = function() {
       'bpmn:TimeDate',
       'bpmn:TimeDuration',
       'bpmn:TimerEventDefinition',
+      'bpmn:Documentation',
     ]);
   }
 
