@@ -24,6 +24,9 @@ module.exports = function() {
       'bpmn:TimeDuration',
       'bpmn:TimerEventDefinition',
       'bpmn:Documentation',
+      'bpmn:InputOutputSpecification',
+      'bpmn:InputSet',
+      'bpmn:OutputSet',
     ]);
   }
 
@@ -35,7 +38,7 @@ module.exports = function() {
     const nodeId = (node.id || '').trim();
 
     if (nodeId.length === 0) {
-      reporter.report(null, 'Element is missing ID');
+      reporter.report(null, 'Element is missing ID ' + node.$type);
       return;
     }
   }
