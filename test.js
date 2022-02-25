@@ -97,7 +97,7 @@ RuleTester.verify('id-required', idRequiredRule, {
       moddleElement: readModdle('./test-diagrams/id-required.invalid.bpmn'),
       report: {
         id: null,
-        message: 'Element is missing ID'
+        message: 'Element is missing ID bpmn:Task'
       }
     }
   ]
