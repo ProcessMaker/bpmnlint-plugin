@@ -45,8 +45,8 @@ function checkValidProcesses(processes, calledElement, startEvent) {
   return processes.find(process => {
     if (process.id == processId || process.package_key == processId) {
       // System processes don't have a start event configured in the callActivity
-      // so we won't verify it
-      if(process.category && process.category.is_system) {
+      // so we won't verify it.
+      if (!isAllowedProcess(process.package_key) && process.category && process.category.is_system) {
         return true;
       }
 
@@ -54,6 +54,12 @@ function checkValidProcesses(processes, calledElement, startEvent) {
     }
     return false;
   }) !== undefined;
+}
+
+function isAllowedProcess(packageKey) {
+  return [
+    'package-actions-by-email/sub-process',
+  ].includes(packageKey);
 }
 
 function filterValidStartEvents(events) {
