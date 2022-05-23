@@ -59,6 +59,7 @@ function checkValidProcesses(processes, calledElement, startEvent) {
 function isAllowedProcess(packageKey) {
   return [
     'package-actions-by-email/sub-process',
+    'DocuSignSendEnvelope',
   ].includes(packageKey);
 }
 
