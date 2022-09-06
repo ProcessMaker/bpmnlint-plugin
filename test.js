@@ -90,6 +90,12 @@ RuleTester.verify('id-required', idRequiredRule, {
     },
     {
       moddleElement: readModdle('./test-diagrams/event-definitions.valid.bpmn')
+    },
+    {
+      moddleElement: readModdle('./test-diagrams/loop-characteristics.valid.bpmn')
+    },
+    {
+      moddleElement: readModdle('./test-diagrams/documentation.valid.bpmn')
     }
   ],
   invalid: [

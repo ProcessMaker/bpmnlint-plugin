@@ -30,8 +30,25 @@ module.exports = function() {
     ]);
   }
 
+  function isLoopCharacteristic(node) {
+    return isAny(node, [
+        'bpmn:MultiInstanceLoopCharacteristics',
+        'bpmn:StandardLoopCharacteristics',
+    ]);
+  }
+
+  function isDocumentation(node) {
+    return isAny(node, [
+      'bpmn:Documentation',
+    ]);
+  }
+
   function check(node, reporter) {
-    if (is(node, 'bpmn:Definitions') || isNonBpmnType(node) || isEventDefinition(node)) {
+    if (is(node, 'bpmn:Definitions')
+        || isDocumentation(node)
+        || isEventDefinition(node)
+        || isLoopCharacteristic(node)
+        || isNonBpmnType(node)) {
       return;
     }
 
