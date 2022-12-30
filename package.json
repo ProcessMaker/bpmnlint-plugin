@@ -21,6 +21,6 @@
   "dependencies": {
     "bpmnlint": "^7.2.1",
     "bpmnlint-utils": "^1.0.1",
-    "mocha": "^6.1.2"
+    "mocha": "^10.2.0"
   }
 }
