@@ -8,21 +8,9 @@ module.exports = function() {
     return node.$type.startsWith('bpmndi') || node.$type.startsWith('dc');
   }
 
-  function isEventDefinition(node) {
-    return isAny(node, [
-      'bpmn:CancelEventDefinition',
-      'bpmn:CompensateDefinition',
-      'bpmn:ErrorEventDefinition',
-      'bpmn:EscalationEventDefinition',
+  function isExemptFromId(node) {
+    return is(node, 'bpmn:EventDefinition') || isAny(node, [
       'bpmn:Expression',
-      'bpmn:LinkEventDefinition',
-      'bpmn:MessageEventDefinition',
-      'bpmn:SignalEventDefinition',
-      'bpmn:TerminateEventDefinition',
-      'bpmn:TimeCycle',
-      'bpmn:TimeDate',
-      'bpmn:TimeDuration',
-      'bpmn:TimerEventDefinition',
       'bpmn:Documentation',
       'bpmn:InputOutputSpecification',
       'bpmn:InputSet',
@@ -31,7 +19,7 @@ module.exports = function() {
   }
 
   function check(node, reporter) {
-    if (is(node, 'bpmn:Definitions') || isNonBpmnType(node) || isEventDefinition(node)) {
+    if (is(node, 'bpmn:Definitions') || isNonBpmnType(node) || isExemptFromId(node)) {
       return;
     }
 
