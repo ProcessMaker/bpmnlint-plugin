@@ -33,6 +33,16 @@
         <bpmn:condition xsi:type="bpmn:tFormalExpression">true</bpmn:condition>
       </bpmn:conditionalEventDefinition>
     </bpmn:intermediateCatchEvent>
+    <bpmn:startEvent id="node_16" name="Conditional Start Event">
+      <bpmn:conditionalEventDefinition>
+        <bpmn:condition xsi:type="bpmn:tFormalExpression">date('i')=='57'</bpmn:condition>
+      </bpmn:conditionalEventDefinition>
+    </bpmn:startEvent>
+    <bpmn:boundaryEvent id="node_17" name="Boundary Conditional Event" attachedToRef="node_15">
+      <bpmn:conditionalEventDefinition>
+        <bpmn:condition xsi:type="bpmn:tFormalExpression">true</bpmn:condition>
+      </bpmn:conditionalEventDefinition>
+    </bpmn:boundaryEvent>
     <bpmn:boundaryEvent id="node_14" name="Boundary Compensate Event" attachedToRef="node_15">
       <bpmn:compensateEventDefinition />
     </bpmn:boundaryEvent>
@@ -64,6 +74,12 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="node_13_di" bpmnElement="node_13">
         <dc:Bounds x="210" y="310" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="node_16_di" bpmnElement="node_16">
+        <dc:Bounds x="210" y="420" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="node_17_di" bpmnElement="node_17">
+        <dc:Bounds x="552" y="322" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="node_14_di" bpmnElement="node_14">
         <dc:Bounds x="522" y="302" width="36" height="36" />
